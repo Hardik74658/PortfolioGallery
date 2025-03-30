@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Zap, Code, Palette, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -44,14 +43,14 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold mb-6 tracking-tight">
               Turning Ideas into
               <div className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-pink-500 to-accent"> Digital Reality</div>
             </h1>
           </motion.div>
           
           <motion.p 
-            className="text-lg md:text-xl text-gray-600 mb-10"
+            className="text-base md:text-lg lg:text-xl text-gray-600 mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -68,7 +67,7 @@ const Hero: React.FC = () => {
           >
             <motion.a 
               href="#projects" 
-              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white px-8 py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20 btn-hover"
+              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white px-6 py-3 md:px-8 md:py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20 btn-hover"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -76,7 +75,7 @@ const Hero: React.FC = () => {
             </motion.a>
             <motion.a 
               href="#about" 
-              className="bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 px-8 py-3.5 rounded-md inline-flex items-center justify-center transition-all btn-hover"
+              className="bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 px-6 py-3 md:px-8 md:py-3.5 rounded-md inline-flex items-center justify-center transition-all btn-hover"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -88,7 +87,7 @@ const Hero: React.FC = () => {
       
       {/* Floating SVG elements */}
       <motion.div 
-        className="absolute top-40 right-20 text-primary/80"
+        className="absolute top-40 right-20 text-primary/80 hidden sm:block" // Hide on small screens
         animate={{ 
           y: [0, -10, 0],
           rotate: [0, 5, 0]
@@ -103,7 +102,7 @@ const Hero: React.FC = () => {
       </motion.div>
       
       <motion.div 
-        className="absolute top-1/3 left-20 text-purple-500/80"
+        className="absolute top-1/3 left-20 text-purple-500/80 hidden sm:block" // Hide on small screens
         animate={{ 
           y: [0, 10, 0],
           rotate: [0, -5, 0]
@@ -119,7 +118,7 @@ const Hero: React.FC = () => {
       </motion.div>
       
       <motion.div 
-        className="absolute bottom-1/3 right-24 text-pink-500/80"
+        className="absolute bottom-1/3 right-24 text-pink-500/80 hidden sm:block" // Hide on small screens
         animate={{ 
           y: [0, 8, 0],
           rotate: [0, 10, 0]
@@ -135,7 +134,7 @@ const Hero: React.FC = () => {
       </motion.div>
       
       <motion.div 
-        className="absolute bottom-40 left-24 text-yellow-500/80"
+        className="absolute bottom-40 left-24 text-yellow-500/80 hidden sm:block" // Hide on small screens
         animate={{ 
           y: [0, -12, 0],
           rotate: [0, -8, 0]
@@ -152,7 +151,7 @@ const Hero: React.FC = () => {
       
       {/* Scroll indicator */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block" // Hide on small screens
         initial={{ opacity: 0, y: -10 }}
         animate={{ 
           opacity: [0.4, 1, 0.4],

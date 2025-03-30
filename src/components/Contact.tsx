@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-24 bg-white relative">
       {/* Add subtle SVG background */}
-      <div className="absolute inset-0 z-50 opacity-30 pointer-events-none">
+      <div className="absolute inset-0 z-50 opacity-30 pointer-events-none hidden sm:block"> {/* Hide on small screens */}
         <svg
           className="absolute top-10 left-10 w-32 h-32 text-blue-200 animate-bounce"
           viewBox="0 0 200 200"

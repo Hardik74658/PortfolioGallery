@@ -202,7 +202,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
                 <div className="mb-8">
                   <h3 className="text-xl font-bold mb-3">About the Project</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{project.details}</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
                 </div>
                 
                 <div className="mb-8">

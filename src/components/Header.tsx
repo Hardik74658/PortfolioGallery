@@ -35,88 +35,17 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {/* Top header for mobile menu button only */}
-      <header 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/90 backdrop-blur-sm shadow-sm py-3' : 'bg-transparent py-5'
-        } md:hidden`}
-      >
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <a href="#" className="font-heading text-2xl font-bold text-primary transition-colors">Portfolio</a>
-          
-          {/* Mobile Menu Button */}
-          <button 
-            className="text-gray-800 hover:text-primary focus:outline-none" 
-            onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile Navigation Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            className="md:hidden fixed inset-0 bg-white z-40 pt-24 px-4"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25 }}
-          >
-            <nav className="flex flex-col gap-6 text-center">
-              <a 
-                href="#home" 
-                className="text-xl font-medium hover:text-primary transition-colors py-3"
-                onClick={toggleMobileMenu}
-              >
-                Home
-              </a>
-              <a 
-                href="#projects" 
-                className="text-xl font-medium hover:text-primary transition-colors py-3"
-                onClick={toggleMobileMenu}
-              >
-                Projects
-              </a>
-              <a 
-                href="#about" 
-                className="text-xl font-medium hover:text-primary transition-colors py-3"
-                onClick={toggleMobileMenu}
-              >
-                About
-              </a>
-              <a 
-                href="#contact" 
-                className="text-xl font-medium hover:text-primary transition-colors py-3"
-                onClick={toggleMobileMenu}
-              >
-                Contact
-              </a>
-              <a 
-                href="#work-experience" 
-                className="text-xl font-medium hover:text-primary transition-colors py-3"
-                onClick={toggleMobileMenu}
-              >
-                Work Experience
-              </a>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Bottom Dock Navigation - Fully centralized */}
       <motion.div 
-        className="fixed p-20 px-10 bottom-5 left-0 right-0 mx-auto z-50 flex justify-center items-center w-[calc(100%-4rem)] max-w-lg bg-white/80 backdrop-blur-md rounded-full shadow-lg  py-3 border border-gray-100 md:flex"
+        className="fixed bottom-5 left-0 right-0 mx-auto z-50 flex justify-center items-center w-[calc(100%-2rem)] max-w-lg bg-white/80 backdrop-blur-md rounded-full shadow-lg py-3 px-4 border border-gray-100 md:flex md:px-10 md:py-3"
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        <nav className="flex items-center justify-center gap-10">
+        <nav className="flex items-center justify-between gap-4 md:gap-10">
           <motion.a 
             href="#home" 
-            className="flex flex-col items-center font-medium text-sm group"
+            className="flex flex-col items-center font-medium text-xs md:text-sm group"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -187,8 +116,9 @@ const Header: React.FC = () => {
         </svg>
       </div>
 
+      {/* Theme Selector Button */}
       <button
-        className="fixed bottom-10 left-10 bg-primary text-white p-4 rounded-full shadow-lg hover:scale-105 transition-transform z-50"
+        className="fixed top-5 right-5 md:top-auto md:right-auto md:bottom-10 md:left-10 bg-primary text-white p-4 rounded-full shadow-lg hover:scale-105 transition-transform z-50"
         onClick={() => setIsThemeSelectorOpen(!isThemeSelectorOpen)}
         aria-label="Toggle theme selector"
       >
@@ -198,7 +128,7 @@ const Header: React.FC = () => {
       <AnimatePresence>
         {isThemeSelectorOpen && (
           <motion.div
-            className="fixed bottom-10 left-10 z-50"
+            className="fixed  bottom-16 right-5 md:bottom-10 md:left-10 z-50 max-w-xs md:max-w-sm lg:max-w-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -213,7 +213,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ onProjectClick }) => {
       </div>
       
       {/* Enhanced decorative SVGs for better visibility */}
-      <div className="absolute inset-0 z-10 opacity-15 pointer-events-none">
+      <div className="absolute inset-0 z-10 opacity-15 pointer-events-none hidden sm:block"> {/* Hide on small screens */}
         <svg className="absolute top-0 left-0 w-48 h-48 text-pink-300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
           <path d="M50 100c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50z" />
         </svg>
@@ -284,68 +284,46 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ onProjectClick }) => {
             const isEven = index % 2 === 0;
             const cardVariant = getVariant(index);
             return (
-              <div key={project.id}>
-                <div className="flex flex-col md:flex-row items-center">
-                  {isEven ? (
-                    <>
-                      {/* Title section on left (20% width) */}
-                      <motion.div
-                        className="w-full md:w-1/5 p-4"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.5 }} // Trigger animation only once
-                        variants={{
-                          hidden: { opacity: 0, x: -50 },
-                          visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
-                        }}
-                      >
-                        <h3 className="text-2xl font-bold text-gray-800">{project.title}</h3>
-                        <p className="text-gray-600 mt-2">{project.category}</p>
-                        <motion.div
-                          animate={{ x: [0, 10, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                          className="mt-4"
-                        >
-                          <ArrowRight size={24} className="text-primary" />
-                        </motion.div>
-                      </motion.div>
-                      {/* Card section on right (80% width) */}
-                      <div className="w-full md:w-4/5 p-4">
-                        <Card project={project} customVariant={cardVariant} onProjectClick={onProjectClick} />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Card section on left (80% width) */}
-                      <div className="w-full md:w-4/5 p-4">
-                        <Card project={project} customVariant={cardVariant} onProjectClick={onProjectClick} />
-                      </div>
-                      {/* Title section on right (20% width) */}
-                      <motion.div
-                        className="w-full md:w-1/5 p-4 text-right"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.5 }} // Trigger animation only once
-                        variants={{
-                          hidden: { opacity: 0, x: 50 },
-                          visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
-                        }}
-                      >
-                        <h3 className="text-2xl font-bold text-gray-800">{project.title}</h3>
-                        <p className="text-gray-600 mt-2">{project.category}</p>
-                        <motion.div
-                          animate={{ x: [0, -10, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                          className="mt-4 flex justify-end"
-                        >
-                          <ArrowRight size={24} className="text-primary" />
-                        </motion.div>
-                      </motion.div>
-                    </>
-                  )}
-                </div>
-                {/* Insert a decorative divider between projects */}
-                {index !== visibleProjects.length - 1 && <DecorativeDivider />}
+              <div key={project.id} className="flex flex-col md:flex-row items-center gap-6">
+                {isEven ? (
+                  <>
+                    <motion.div
+                      className="w-full md:w-1/3 p-4"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.5 }}
+                      variants={{
+                        hidden: { opacity: 0, x: -50 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                      }}
+                    >
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-800">{project.title}</h3>
+                      <p className="text-gray-600 mt-2">{project.category}</p>
+                    </motion.div>
+                    <div className="w-full md:w-2/3 p-4">
+                      <Card project={project} customVariant={cardVariant} onProjectClick={onProjectClick} />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-full md:w-2/3 p-4">
+                      <Card project={project} customVariant={cardVariant} onProjectClick={onProjectClick} />
+                    </div>
+                    <motion.div
+                      className="w-full md:w-1/3 p-4 text-right"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.5 }}
+                      variants={{
+                        hidden: { opacity: 0, x: 50 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                      }}
+                    >
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-800">{project.title}</h3>
+                      <p className="text-gray-600 mt-2">{project.category}</p>
+                    </motion.div>
+                  </>
+                )}
               </div>
             );
           })}
